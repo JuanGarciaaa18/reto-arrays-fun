@@ -25,23 +25,64 @@ public class CalificacionesEstudiantes {
     }
 
     public static void mostrarInformacionEstudiantes(String[] estudiantes, String[] materias, double[][] notas) {
-
-        System.out.println("Información de los estudiantes:");
-
-
-
+        for (int x = 0; x < estudiantes.length; x++) {
+            System.out.print(estudiantes[x] + ": "+ "\n");
+            for (int i = 0; i < materias.length; i++) {
+                System.out.print(materias[i] + "=" + notas[x][i] + " \n");
+            }
+            System.out.println();
+        }
     }
 
     public static void calcularPromedios(String[] estudiantes, double[][] notas) {
         System.out.println("\nPromedios de los estudiantes:");
-        // Implementa este método
+
+        for (int x = 0; x < estudiantes.length; x++) {
+            System.out.print(estudiantes[x] + ": ");
+
+            double suma=0;
+            for (double nota : notas[x]) suma += nota;
+            System.out.println(estudiantes[x] + ": " + suma / notas[x].length);
+        }
     }
 
     public static void encontrarMejorEstudiante(String[] estudiantes, double[][] notas) {
-        // Implementa este método
+        System.out.println("\n");
+
+        int mejorestudiante = 0;
+        double mejorPromedio = 0;
+
+        for (int x= 0; x < estudiantes.length; x++) {
+            double suma = 0;
+            for (double nota : notas[x]) suma += nota;
+            double promedio = suma / notas[x].length;
+
+            if (promedio > mejorPromedio) {
+                mejorPromedio = promedio;
+                mejorestudiante = x;
+            }
+        }
+
+        System.out.println("Mejor estudiante: " + estudiantes[mejorestudiante] + " con promedio " + mejorPromedio);
     }
 
     public static void encontrarMejorMateria(String[] materias, double[][] notas) {
-        // Implementa este método
+        int mejormateria = 0;
+        double mejorPromedio = 0;
+
+        for (int x = 0; x < materias.length; x++) {
+            double suma = 0;
+            for (double[] nota : notas) suma += nota[x];
+            double promedio = suma / notas.length;
+
+            if (promedio > mejorPromedio) {
+                mejorPromedio = promedio;
+                mejormateria = x;
+            }
+        }
+
+        System.out.println("Mejor materia: " + materias[mejormateria] + " con promedio " + mejorPromedio);
     }
 }
+
+
