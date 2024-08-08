@@ -50,20 +50,20 @@ public class CalificacionesEstudiantes {
         System.out.println("\n");
 
         int mejorestudiante = 0;
-        double mejorPromedio = 0;
+        double mejorPromedios = 0;
 
         for (int x= 0; x < estudiantes.length; x++) {
             double suma = 0;
             for (double nota : notas[x]) suma += nota;
             double promedio = suma / notas[x].length;
 
-            if (promedio > mejorPromedio) {
-                mejorPromedio = promedio;
+            if (promedio > mejorPromedios) {
+                mejorPromedios = promedio;
                 mejorestudiante = x;
             }
         }
 
-        System.out.println("Mejor estudiante: " + estudiantes[mejorestudiante] + " con promedio " + mejorPromedio);
+        System.out.println("Mejor estudiante: " + estudiantes[mejorestudiante] + " con promedio " + mejorPromedios);
     }
 
     public static void encontrarMejorMateria(String[] materias, double[][] notas) {
